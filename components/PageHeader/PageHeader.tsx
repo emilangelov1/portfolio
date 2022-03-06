@@ -5,7 +5,7 @@ import { SunFill } from "@emotion-icons/bootstrap/SunFill";
 type Props = {};
 
 const HeaderContaner = styled.div`
-  position: absolute;
+  position: fixed;
   background: rgba(29, 29, 29, 0.8);
   border: 1px solid #313131;
   backdrop-filter: blur(18px);
@@ -14,6 +14,7 @@ const HeaderContaner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 `;
 
 const TextContainer = styled.div`

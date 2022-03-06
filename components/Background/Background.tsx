@@ -5,12 +5,7 @@ type Props = {};
 
 const BackgroundColor = styled.div`
   background-color: #1d1d1d;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height: 100vh;
 `;
 
-export default function Background({ children }: any) {
-  return <BackgroundColor>{children}</BackgroundColor>;
-}
+export default BackgroundColor;

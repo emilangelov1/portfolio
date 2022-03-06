@@ -1,6 +1,5 @@
+import { css } from "@emotion/react";
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import Background from "../components/Background/Background";
 import InfoCard from "../components/InfoCard/InfoCard";
 import PageHeader from "../components/PageHeader/PageHeader";
@@ -11,7 +10,9 @@ const Home: NextPage = () => {
     <>
       <PageHeader />
       <Background>
-        <InfoCard></InfoCard>
+        <div style={{ paddingTop: 300 }}>
+          <InfoCard></InfoCard>
+        </div>
       </Background>
     </>
   );
