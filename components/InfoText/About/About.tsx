@@ -9,7 +9,8 @@ const AboutText = styled.p`
   font-weight: 900;
   font-size: 72px;
   line-height: 101px;
-  color: #ffffff;
+  color: ${(props) =>
+    props.theme.color.onSurface};
   margin: 0 auto;
   display: flex;
   align-items: center;

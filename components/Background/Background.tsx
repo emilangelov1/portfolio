@@ -8,7 +8,8 @@ const BackgroundColor = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1d1d1d;
+  background-color: ${(props) =>
+    props.theme.color.background};
   min-height: 100vh;
 `;
 

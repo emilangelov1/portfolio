@@ -1,13 +1,18 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { SunFill } from "@emotion-icons/bootstrap/SunFill";
+import { useStore } from "../../themes";
+import Color from "color";
 
 type Props = {};
 
 const HeaderContaner = styled.div`
   position: fixed;
-  background: rgba(29, 29, 29, 0.8);
   border: 1px solid #313131;
+  background: ${(props) =>
+    Color(props.theme.color.background)
+      .alpha(0.7)
+      .toString()};
   backdrop-filter: blur(18px);
   width: 100vw;
   height: 8vh;
@@ -33,7 +38,8 @@ const Name = styled.p`
   font-weight: 900;
   font-size: 1rem;
   line-height: 22px;
-  color: #ffffff;
+  color: ${(props) =>
+    props.theme.color.onSurface};
 `;
 
 const InfoTab = styled.div`
@@ -52,7 +58,8 @@ const InfoText = styled.a`
   font-weight: 400;
   font-size: 0.9rem;
   line-height: 19px;
-  color: #ffffff;
+  color: ${(props) =>
+    props.theme.color.onSurface};
   &:hover {
     cursor: pointer;
   }
@@ -60,12 +67,14 @@ const InfoText = styled.a`
 
 const ModeButton = styled.button`
   border: 4px solid green;
-  background: #141414;
+  background: ${(props) =>
+    props.theme.color.darkerSurface};
   border: none;
   height: 40px;
   width: 40px;
   border-radius: 6px;
-  color: #ffffff;
+  color: ${(props) =>
+    props.theme.color.onSurface};
   &:hover {
     cursor: pointer;
   }
@@ -76,6 +85,7 @@ const WhiteSunFill = styled(SunFill)`
 `;
 
 export default function PageHeader({}: Props) {
+  const { toggleTheme } = useStore();
   return (
     <HeaderContaner>
       <TextContainer>
@@ -83,8 +93,12 @@ export default function PageHeader({}: Props) {
         <InfoTab>
           <InfoText>About</InfoText>
           <InfoText>Projects</InfoText>
-          <InfoText>Github</InfoText>
-          <ModeButton>
+          <InfoText href="https://github.com/emilangelov1">
+            Github
+          </InfoText>
+          <ModeButton
+            onClick={() => toggleTheme()}
+          >
             <WhiteSunFill />
           </ModeButton>
         </InfoTab>

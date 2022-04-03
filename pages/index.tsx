@@ -17,10 +17,10 @@ const Home: NextPage = () => {
           <About />
           <InfoCard></InfoCard>
         </div>
-        <div style={{ paddingTop: 150 }}>
+        {/* <div style={{ paddingTop: 150 }}>
           <Projects />
           <AllProjectsContainer />
-        </div>
+        </div> */}
         <div style={{ paddingTop: 150 }}>
           <GetInTouchInfo></GetInTouchInfo>
         </div>
