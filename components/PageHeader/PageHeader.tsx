@@ -31,7 +31,7 @@ const Name = styled.p`
   font-family: Helvetica Now Display;
   font-style: normal;
   font-weight: 900;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 22px;
   color: #ffffff;
 `;

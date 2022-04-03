@@ -16,7 +16,6 @@ const InfoCardContainer = styled.div`
 `;
 
 const ProfilePhoto = styled.img`
-  border: 2px solid yellow;
   height: 110px;
   width: 110px;
   object-fit: contain;
@@ -60,13 +59,11 @@ const Workplace = styled.a`
 `;
 
 const LeftInfo = styled.div`
-  border: solid 1px yellow;
   display: flex;
 `;
 
 const TopInfo = styled.div`
   display: flex;
-  border: 1px solid red;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -132,26 +129,7 @@ export default function InfoCard({}: Props) {
         dicta, aut aliquid soluta aspernatur magni
         quibusdam ea officia quidem consequatur
         saepe error repudiandae facilis
-        architecto! Suscipit consectetur,
-        voluptatum repellendus hic aut ducimus,
-        labore, omnis maiores rerum eligendi
-        saepe! Quasi accusantium blanditiis
-        aliquam, tenetur natus saepe quas
-        excepturi ab nulla ducimus quo quos
-        pariatur sit ipsam laboriosam minus est.
-        Alias earum repellendus officia itaque
-        sit, accusantium totam eveniet
-        voluptatibus id odio quam fugit, dolor
-        sunt! Impedit minus hic illum eos?
-        Deserunt incidunt nulla ducimus adipisci
-        voluptatibus assumenda, esse recusandae
-        possimus vero obcaecati cum odit suscipit
-        beatae voluptate eaque in nesciunt! Ipsam
-        eligendi ut minima expedita quaerat illo,
-        quos aut consectetur voluptatibus officia
-        fuga. Quos perspiciatis quis error ipsam,
-        nemo perferendis consequuntur rem sed! In,
-        culpa?
+        architecto!
       </InfoText>
     </InfoCardContainer>
   );
