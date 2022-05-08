@@ -8,18 +8,22 @@ type Props = {};
 
 const HeaderContaner = styled.div`
   position: fixed;
-  border: 1px solid #313131;
+  border-top: 1px solid
+    ${(props) => props.theme.color.borderColor};
+  border-bottom: 1px solid
+    ${(props) => props.theme.color.borderColor};
   background: ${(props) =>
     Color(props.theme.color.background)
       .alpha(0.7)
       .toString()};
   backdrop-filter: blur(18px);
   width: 100vw;
-  height: 8vh;
+  max-height: 86px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
+  user-select: none;
 `;
 
 const TextContainer = styled.div`
@@ -33,6 +37,11 @@ const TextContainer = styled.div`
 `;
 
 const Name = styled.p`
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
   font-family: Helvetica Now Display;
   font-style: normal;
   font-weight: 900;
@@ -46,7 +55,7 @@ const InfoTab = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex: 1;
+  flex: 2;
   max-width: 320px;
   height: 60%;
   /* border: 1px solid red; */
@@ -58,15 +67,16 @@ const InfoText = styled.a`
   font-weight: 400;
   font-size: 0.9rem;
   line-height: 19px;
+  transition: all 0.2s ease-in-out;
   color: ${(props) =>
     props.theme.color.onSurface};
   &:hover {
     cursor: pointer;
+    transform: scale(1.05);
   }
 `;
 
 const ModeButton = styled.button`
-  border: 4px solid green;
   background: ${(props) =>
     props.theme.color.darkerSurface};
   border: none;
@@ -75,13 +85,17 @@ const ModeButton = styled.button`
   border-radius: 6px;
   color: ${(props) =>
     props.theme.color.onSurface};
+  transition: all 0.3s ease-in-out;
   &:hover {
     cursor: pointer;
+    transform: scale(1.02);
+    box-shadow: 0px 0px 45px -10px rgba(0, 0, 0, 0.8);
   }
 `;
 
 const WhiteSunFill = styled(SunFill)`
   color: white;
+  text-align: center;
 `;
 
 export default function PageHeader({}: Props) {

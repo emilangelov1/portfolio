@@ -8,6 +8,8 @@ declare module "@emotion/react" {
       surface: string;
       background: string;
       darkerSurface: string;
+      borderColor: string;
+      buttonContainer: string;
     };
   }
 }

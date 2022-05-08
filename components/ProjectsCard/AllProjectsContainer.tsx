@@ -1,72 +1,133 @@
 import styled from "@emotion/styled";
-import React from "react";
+import {
+  ArrowIosBackOutline,
+  ArrowIosForwardOutline,
+} from "emotion-icons/evaicons-outline";
+import React, { useState } from "react";
+import { projects } from "./projects/projects";
 import ProjectsCard from "./SingleProjectsCard";
+import {
+  useSpring,
+  animated,
+} from "react-spring";
 
 type Props = {};
 
-const AllProjectsDiv = styled.div`
+const AllProjectsDiv = styled(animated.div)`
   display: flex;
-  border: solid 2px yellow;
-  overflow: hidden;
-  justify-content: center;
-  align-content: center;
-  /* margin: 50px; */
-  /* width: 50%; */
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  gap: 120px;
+  width: 100%;
+  user-select: none;
 `;
 
-const LeftButton = styled.button`
+const LeftButton = styled.a`
   width: 48px;
   height: 48px;
   border-radius: 5px;
   border: none;
-  background: #393939;
+  background: ${(props) =>
+    props.theme.color.buttonContainer};
+  transition: all 0.4s ease-in-out;
   &:hover {
     cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 40px -15px rgba(0, 0, 0, 0.8);
   }
 `;
 
-const RightButton = styled.button`
+const RightButton = styled.a`
   width: 48px;
   height: 48px;
   border-radius: 5px;
   border: none;
-  background: #393939;
+  background: ${(props) =>
+    props.theme.color.buttonContainer};
   align-items: space-around;
+  transition: all 0.4s ease-in-out;
   &:hover {
     cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 40px -15px rgba(0, 0, 0, 0.8);
   }
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
-  width: 120px;
-  border: 1px solid red;
-  margin: 20px 0px;
+  gap: 30px;
+  width: 100%;
+  margin: 0px 0px 50px 0px;
 `;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  width: 90%;
+  max-width: 720px;
+`;
+
+const LeftArrow = styled(ArrowIosBackOutline)`
+  color: white;
+`;
+
+const RightArrow = styled(ArrowIosForwardOutline)`
+  color: white;
 `;
 
 export default function AllProjectsContainer({}: Props) {
+  let [counter, setCounter] = useState(0);
+  const [projectState, setProjectState] =
+    useState(0);
+  const props = useSpring({
+    right: projectState,
+  });
+  const forwardClickHandler = () => {
+    setProjectState(projectState + 396);
+    setCounter((counter += 1));
+    if (counter >= Object.keys(projects).length) {
+      setCounter(0);
+      setProjectState(0);
+    }
+  };
+  const backwardClickHandler = () => {
+    if (projectState < 1) {
+      setProjectState(0);
+    } else {
+      setProjectState(projectState - 396);
+      setCounter((counter -= 1));
+    }
+  };
+  console.log(counter);
   return (
     <Container>
       <ButtonContainer>
-        <LeftButton></LeftButton>
-        <RightButton></RightButton>
+        <LeftButton
+          onClick={backwardClickHandler}
+        >
+          <LeftArrow />
+        </LeftButton>
+        <RightButton
+          onClick={forwardClickHandler}
+        >
+          <RightArrow />
+        </RightButton>
       </ButtonContainer>
-      <AllProjectsDiv>
-        <ProjectsCard />
-        <ProjectsCard />
-        <ProjectsCard />
-        <ProjectsCard />
-        <ProjectsCard />
-        <ProjectsCard />
+      <AllProjectsDiv
+        style={{ right: props.right }}
+      >
+        {Object.keys(projects).map((project) => {
+          return (
+            <ProjectsCard
+              title={project}
+            ></ProjectsCard>
+          );
+        })}
       </AllProjectsDiv>
     </Container>
   );

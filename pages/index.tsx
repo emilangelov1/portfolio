@@ -13,17 +13,11 @@ const Home: NextPage = () => {
     <>
       <PageHeader />
       <Background>
-        <div style={{ paddingTop: 150 }}>
-          <About />
-          <InfoCard></InfoCard>
-        </div>
-        {/* <div style={{ paddingTop: 150 }}>
-          <Projects />
-          <AllProjectsContainer />
-        </div> */}
-        <div style={{ paddingTop: 150 }}>
-          <GetInTouchInfo></GetInTouchInfo>
-        </div>
+        <About />
+        <InfoCard></InfoCard>
+        <Projects />
+        <AllProjectsContainer />
+        {/* <GetInTouchInfo></GetInTouchInfo> */}
       </Background>
     </>
   );

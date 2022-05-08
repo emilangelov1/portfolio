@@ -12,10 +12,11 @@ type Props = {
 };
 
 const SocialsContainer = styled.div`
+  border: 1px solid red;
   display: grid;
   justify-content: center;
   align-items: center;
-  min-width: 50%;
+  max-width: 90%;
   row-gap: 50px;
   column-gap: 200px;
   grid-template-rows: 1fr;
@@ -28,6 +29,8 @@ const SocialsContainer = styled.div`
 `;
 
 const SocialsLink = styled.a<Props>`
+  min-width: 100%;
+  border: 2px solid green;
   ${(props) =>
     props.span
       ? css`

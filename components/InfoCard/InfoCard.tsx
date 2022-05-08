@@ -14,6 +14,7 @@ const InfoCardContainer = styled.div`
   width: 720px;
   padding: 2rem;
   margin: 0 auto;
+  user-select: none;
 `;
 
 const ProfilePhoto = styled.img`
@@ -25,18 +26,23 @@ const ProfilePhoto = styled.img`
 `;
 
 const Name = styled.p`
+  display: block;
+  width: 100%;
+  text-align: start;
+  flex: 2;
   font-family: Helvetica Now Display;
+  flex-direction: column;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 33px;
   color: ${(props) =>
     props.theme.color.onSurface};
-  display: flex;
-  flex-direction: column;
 `;
 
 const ProfileInfo = styled.p`
+  display: block;
+  width: 100%;
   font-family: Helvetica Now Display;
   font-style: normal;
   font-weight: 900;
@@ -49,7 +55,11 @@ const ProfileInfo = styled.p`
 `;
 
 const CurrentJob = styled.p`
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
   font-family: Helvetica Now Display;
+  min-width: 0px;
   font-style: normal;
   font-weight: 900;
   font-size: 14px;
@@ -64,13 +74,14 @@ const Workplace = styled.a`
 
 const LeftInfo = styled.div`
   display: flex;
+  margin: 0 auto;
+  flex: 1;
 `;
 
 const TopInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
 `;
 
 const InfoText = styled.p`
@@ -88,7 +99,7 @@ export default function InfoCard({}: Props) {
     <InfoCardContainer>
       <TopInfo>
         <LeftInfo>
-          <ProfilePhoto src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"></ProfilePhoto>
+          <ProfilePhoto src="https://media-exp1.licdn.com/dms/image/C4D03AQElcv4AbozhWw/profile-displayphoto-shrink_800_800/0/1650489006908?e=1657756800&v=beta&t=zA0RtHtDfyDAitkQognjwUVmMEMzJwZN5FnJYNhRytQ"></ProfilePhoto>
           <Name>
             Emil Angelov
             <ProfileInfo>

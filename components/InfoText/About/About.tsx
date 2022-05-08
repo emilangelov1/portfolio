@@ -16,6 +16,14 @@ const AboutText = styled.p`
   align-items: center;
   justify-content: center;
   padding-bottom: 50px;
+  transition: all 0.1s ease-in-out;
+  @media screen and (max-width: 800px) {
+    padding-top: 30px;
+  }
+  @media screen and (max-width: 600px) {
+    padding-top: 40px;
+  }
+  user-select: none;
 `;
 
 export default function About({}: Props) {

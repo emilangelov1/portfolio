@@ -4,6 +4,10 @@ import React from "react";
 type Props = {};
 
 const ProjectsText = styled.p`
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: Helvetica Now Display;
   font-style: normal;
   font-weight: 900;
@@ -11,11 +15,8 @@ const ProjectsText = styled.p`
   line-height: 101px;
   color: ${(props) =>
     props.theme.color.onSurface};
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 50px;
+  padding: 50px 0px;
+  user-select: none;
 `;
 
 export default function Projects({}: Props) {

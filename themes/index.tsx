@@ -13,6 +13,8 @@ export const darkTheme: Theme = {
     onSurface: "#FFFFFF",
     primary: "#0075FF",
     darkerSurface: "#0f0f0ffF",
+    borderColor: "#313131",
+    buttonContainer: "#393939",
   },
 };
 
@@ -23,6 +25,8 @@ export const lightTheme: Theme = {
     onSurface: "#1d1d1d",
     primary: "#0075FF",
     darkerSurface: "#afafaf",
+    borderColor: "#cecece",
+    buttonContainer: "#c6c6c6",
   },
 };
 
