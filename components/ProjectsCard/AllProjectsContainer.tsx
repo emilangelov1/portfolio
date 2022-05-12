@@ -124,6 +124,7 @@ export default function AllProjectsContainer({}: Props) {
         {Object.keys(projects).map((project) => {
           return (
             <ProjectsCard
+              key={project}
               title={project}
             ></ProjectsCard>
           );

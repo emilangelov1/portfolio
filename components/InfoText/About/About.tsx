@@ -54,6 +54,7 @@ const Model = () => {
         {gltf.map((single) => {
           return (
             <primitive
+              key={Math.random()}
               object={single.scene}
               dispose={null}
             />
