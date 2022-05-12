@@ -94,18 +94,23 @@ const InfoText = styled.p`
     props.theme.color.onSurface};
 `;
 
+const NameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export default function InfoCard({}: Props) {
   return (
     <InfoCardContainer>
       <TopInfo>
         <LeftInfo>
           <ProfilePhoto src="https://media-exp1.licdn.com/dms/image/C4D03AQElcv4AbozhWw/profile-displayphoto-shrink_800_800/0/1650489006908?e=1657756800&v=beta&t=zA0RtHtDfyDAitkQognjwUVmMEMzJwZN5FnJYNhRytQ"></ProfilePhoto>
-          <Name>
-            Emil Angelov
+          <NameContainer>
+            <Name>Emil Angelov</Name>
             <ProfileInfo>
               Front-End Developer
             </ProfileInfo>
-          </Name>
+          </NameContainer>
         </LeftInfo>
         <CurrentJob>
           Currently @{" "}

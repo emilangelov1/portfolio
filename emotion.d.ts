@@ -13,3 +13,8 @@ declare module "@emotion/react" {
     };
   }
 }
+
+declare module "*.gltf" {
+  const content: any;
+  export default content;
+}
