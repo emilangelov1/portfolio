@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import * as THREE from "three";
 import React, {
+  MutableRefObject,
+  RefObject,
   Suspense,
-  useMemo,
   useRef,
 } from "react";
 import {
-  Html,
+  OrbitControlsProps,
   PresentationControls,
 } from "@react-three/drei/web";
 import {
@@ -17,6 +18,11 @@ import {
   useGLTF,
   Environment,
 } from "@react-three/drei";
+import {
+  BufferGeometry,
+  Material,
+  Mesh,
+} from "three";
 
 type Props = {};
 
@@ -65,7 +71,9 @@ const Model = () => {
 };
 
 const HTML = () => {
-  const group = useRef<React.MutableRefObject>();
+  const group = useRef() as MutableRefObject<
+    Mesh<BufferGeometry, Material | Material[]>
+  >;
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     group.current.rotation.x =
