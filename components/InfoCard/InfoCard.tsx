@@ -4,34 +4,48 @@ import React from "react";
 type Props = {};
 
 const InfoCardContainer = styled.div`
-  justify-content: space-around;
-  align-items: center;
   background: ${(props) =>
     props.theme.color.surface};
   backdrop-filter: blur(38px);
   border-radius: 11px;
   max-width: 90%;
   width: 720px;
+  transition: all 1s ease-in-out;
   padding: 2rem;
   margin: 0 auto;
   user-select: none;
 `;
 
 const ProfilePhoto = styled.img`
+  position: relative;
+  display: flex;
   height: 110px;
   width: 110px;
-  object-fit: contain;
+  transition: all 1s ease-in-out;
+  @media only screen and (max-width: 580px) {
+    transition: all 1s ease-in-out;
+    max-width: 110px;
+    max-height: 110px;
+    overflow: hidden;
+  }
+  object-fit: cover;
   border-radius: 11px;
   margin-right: 20px;
 `;
 
 const Name = styled.p`
   display: block;
-  width: 100%;
-  text-align: start;
-  flex: 2;
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+  @media only screen and (max-width: 580px) {
+    transition: all 1s ease-in-out;
+    text-align: center;
+  }
+  margin: 0;
+  max-width: 100%;
   font-family: Helvetica Now Display;
-  flex-direction: column;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -41,8 +55,16 @@ const Name = styled.p`
 `;
 
 const ProfileInfo = styled.p`
+  position: relative;
   display: block;
-  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+  @media only screen and (max-width: 580px) {
+    transition: all 1s ease-in-out;
+    text-align: center;
+  }
+  max-width: 100%;
   font-family: Helvetica Now Display;
   font-style: normal;
   font-weight: 900;
@@ -58,6 +80,13 @@ const CurrentJob = styled.p`
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
+  text-align: end;
+  transition: all 1s ease-in-out;
+  @media only screen and (max-width: 580px) {
+    transition: all 1s ease-in-out;
+    text-align: center;
+  }
+  width: 50%;
   font-family: Helvetica Now Display;
   min-width: 0px;
   font-style: normal;
@@ -74,17 +103,31 @@ const Workplace = styled.a`
 
 const LeftInfo = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   margin: 0 auto;
-  flex: 1;
+  flex: 2;
+  @media only screen and (max-width: 580px) {
+    max-width: max-content;
+  }
 `;
 
 const TopInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  transition: all 1s ease-in-out;
+  @media only screen and (max-width: 580px) {
+    transition: all 1s ease-in-out;
+    flex-direction: column;
+  }
 `;
 
 const InfoText = styled.p`
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
   font-family: Helvetica Now Display;
   font-style: normal;
   font-weight: normal;
@@ -97,6 +140,10 @@ const InfoText = styled.p`
 const NameContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: auto;
+  width: 100%;
 `;
 
 export default function InfoCard({}: Props) {
