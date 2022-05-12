@@ -10,7 +10,6 @@ const InfoCardContainer = styled.div`
   border-radius: 11px;
   max-width: 90%;
   width: 720px;
-  transition: all 1s ease-in-out;
   padding: 2rem;
   margin: 0 auto;
   user-select: none;
@@ -21,9 +20,7 @@ const ProfilePhoto = styled.img`
   display: flex;
   height: 110px;
   width: 110px;
-  transition: all 1s ease-in-out;
   @media only screen and (max-width: 580px) {
-    transition: all 1s ease-in-out;
     max-width: 110px;
     max-height: 110px;
     overflow: hidden;
@@ -38,9 +35,7 @@ const Name = styled.p`
   position: relative;
   text-overflow: ellipsis;
   overflow: hidden;
-  transition: all 1s ease-in-out;
   @media only screen and (max-width: 580px) {
-    transition: all 1s ease-in-out;
     text-align: center;
   }
   margin: 0;
@@ -59,9 +54,7 @@ const ProfileInfo = styled.p`
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
-  transition: all 1s ease-in-out;
   @media only screen and (max-width: 580px) {
-    transition: all 1s ease-in-out;
     text-align: center;
   }
   max-width: 100%;
@@ -81,9 +74,7 @@ const CurrentJob = styled.p`
   text-overflow: ellipsis;
   overflow: hidden;
   text-align: end;
-  transition: all 1s ease-in-out;
   @media only screen and (max-width: 580px) {
-    transition: all 1s ease-in-out;
     text-align: center;
   }
   width: 50%;
@@ -117,9 +108,7 @@ const TopInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  transition: all 1s ease-in-out;
   @media only screen and (max-width: 580px) {
-    transition: all 1s ease-in-out;
     flex-direction: column;
   }
 `;
