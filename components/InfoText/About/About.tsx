@@ -104,13 +104,13 @@ const HTML = () => {
   });
   return (
     <group
-      position={[0, 0, -160]}
+      position={[10, 25, -160]}
       rotation={[0.1, -0.425, 0]}
     >
       <ambientLight intensity={0.1} />
       <pointLight
         color="white"
-        intensity={0.5}
+        intensity={0.3}
         position={[10, 40, -20]}
         castShadow
       />
@@ -118,11 +118,11 @@ const HTML = () => {
         castShadow
         ref={group}
         position={[-10, -20, -10]}
-        scale={[35, 35, 35]}
+        scale={[20, 20, 20]}
       >
         <PresentationControls
           global
-          config={{ mass: 2, tension: 400 }}
+          config={{ mass: 4, tension: 500 }}
           rotation={[-0.2, 1, -0.1]}
           polar={[-Math.PI / 3, Math.PI / 3]}
           azimuth={[-Math.PI / 1.4, Math.PI / 2]}
@@ -146,10 +146,12 @@ export default function About({}: Props) {
         }}
         shadows
         style={{
-          maxWidth: 700,
-          width: 700,
-          maxHeight: 250,
-          height: 250,
+          maxWidth: 600,
+          width: 600,
+          maxHeight: 400,
+          height: 400,
+          zIndex: "0",
+          position: "relative",
         }}
         dpr={[1, 2]}
         camera={{

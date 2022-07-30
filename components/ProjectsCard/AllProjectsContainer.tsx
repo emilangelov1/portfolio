@@ -3,13 +3,21 @@ import {
   ArrowIosBackOutline,
   ArrowIosForwardOutline,
 } from "emotion-icons/evaicons-outline";
-import React, { useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 import { projects } from "./projects/projects";
-import ProjectsCard from "./SingleProjectsCard";
+import ProjectsCard, {
+  CardProps,
+} from "./SingleProjectsCard";
 import {
   useSpring,
   animated,
 } from "react-spring";
+import MobileProjectsCard from "./MobileProjectsCard";
+import { motion } from "framer-motion";
+import { ScaleHover } from "../PageHeader/PageHeader";
 
 type Props = {};
 
@@ -23,22 +31,29 @@ const AllProjectsDiv = styled(animated.div)`
   user-select: none;
 `;
 
-const LeftButton = styled.a`
+const MobileAllProjectsDiv = styled(animated.div)`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  gap: 60px;
+  width: 100%;
+  user-select: none;
+`;
+
+const LeftButton = styled(motion.a)`
   width: 48px;
   height: 48px;
   border-radius: 5px;
   border: none;
   background: ${(props) =>
     props.theme.color.buttonContainer};
-  transition: all 0.4s ease-in-out;
   &:hover {
     cursor: pointer;
-    transform: scale(1.05);
-    box-shadow: 0px 0px 40px -15px rgba(0, 0, 0, 0.8);
   }
 `;
 
-const RightButton = styled.a`
+const RightButton = styled(motion.a)`
   width: 48px;
   height: 48px;
   border-radius: 5px;
@@ -46,11 +61,8 @@ const RightButton = styled.a`
   background: ${(props) =>
     props.theme.color.buttonContainer};
   align-items: space-around;
-  transition: all 0.4s ease-in-out;
   &:hover {
     cursor: pointer;
-    transform: scale(1.05);
-    box-shadow: 0px 0px 40px -15px rgba(0, 0, 0, 0.8);
   }
 `;
 
@@ -103,16 +115,51 @@ export default function AllProjectsContainer({}: Props) {
       setCounter((counter -= 1));
     }
   };
-  console.log(counter);
+  const MobileForwardClickHandler = () => {
+    setProjectState(projectState + 198);
+    setCounter((counter += 1));
+    if (counter >= Object.keys(projects).length) {
+      setCounter(0);
+      setProjectState(0);
+    }
+  };
+  const MobileBackwardClickHandler = () => {
+    if (projectState < 1) {
+      setProjectState(0);
+    } else {
+      setProjectState(projectState - 198);
+      setCounter((counter -= 1));
+    }
+  };
   return (
     <Container>
       <ButtonContainer>
         <LeftButton
+          whileHover={{
+            scale: 1.1,
+            boxShadow:
+              "0px 0px 25px -3px rgba(0, 0, 0, 0.2)",
+          }}
+          transition={{
+            bounce: 0.4,
+            type: "spring",
+            duration: 0.6,
+          }}
           onClick={backwardClickHandler}
         >
           <LeftArrow />
         </LeftButton>
         <RightButton
+          whileHover={{
+            scale: 1.1,
+            boxShadow:
+              "0px 0px 25px -3px rgba(0, 0, 0, 0.2)",
+          }}
+          transition={{
+            bounce: 0.4,
+            type: "spring",
+            duration: 0.6,
+          }}
           onClick={forwardClickHandler}
         >
           <RightArrow />
@@ -124,7 +171,7 @@ export default function AllProjectsContainer({}: Props) {
         {Object.keys(projects).map((project) => {
           return (
             <ProjectsCard
-              key={project}
+              key={counter}
               title={project}
             ></ProjectsCard>
           );

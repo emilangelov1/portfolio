@@ -1,7 +1,6 @@
 import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import React from "react";
-import { motion } from "framer-motion";
 
 type Cards = {
   title: string;
@@ -15,17 +14,19 @@ export type CardProps = React.DetailedHTMLProps<
 > &
   Cards;
 
-const ProjectsContainer = styled.div`
+const MobileProjectsContainer = styled.div`
   flex-wrap: wrap;
-  min-width: 276px;
-  min-height: 346px;
-  background-color: ${(props) =>
+  min-width: 138px;
+  min-height: 173px;
+  background: ${(props) =>
     props.theme.color.surface};
   backdrop-filter: blur(30px);
   border-radius: 21px;
   transition: all 0.3s ease-in-out;
   &:hover {
     cursor: pointer;
+    transform: scale(1.02);
+    box-shadow: 0px 0px 100px -15px rgba(0, 0, 0, 0.6);
   }
 `;
 
@@ -47,37 +48,22 @@ const ProjectTitle = styled.p`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  /* line-height: 22px; */
   color: ${(props) =>
     props.theme.color.onSurface};
   max-width: 90%;
   width: 10rem;
 `;
 
-export default function ProjectsCard({
+export default function MobileProjectsCard({
   title,
   key,
   ...props
 }: CardProps) {
   return (
-    <motion.div
-      style={{ borderRadius: "21px" }}
-      whileHover={{
-        scale: 1.03,
-        boxShadow:
-          "0px 0px 90px -15px rgba(0, 0, 0, 0.9)",
-      }}
-      transition={{
-        bounce: 1,
-        type: "spring",
-        duration: 0.3,
-        damping: 5,
-        velocity: 0.2,
-      }}
-    >
-      <ProjectsContainer {...props}>
-        <ProjectsImage src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=960&q=80" />
-        <ProjectTitle>{title}</ProjectTitle>
-      </ProjectsContainer>
-    </motion.div>
+    <MobileProjectsContainer {...props}>
+      <ProjectsImage src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=960&q=80" />
+      <ProjectTitle>{title}</ProjectTitle>
+    </MobileProjectsContainer>
   );
 }

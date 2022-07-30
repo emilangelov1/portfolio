@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, {
+  ReactElement,
+  ReactNode,
+} from "react";
 import { SunFill } from "@emotion-icons/bootstrap/SunFill";
 import { useStore } from "../../themes";
 import Color from "color";
-
-type Props = {};
+import { motion } from "framer-motion";
 
 const HeaderContaner = styled.div`
   position: fixed;
@@ -33,7 +35,6 @@ const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: solid 2px yellow; */
 `;
 
 const Name = styled.p`
@@ -58,7 +59,6 @@ const InfoTab = styled.div`
   flex: 2;
   max-width: 320px;
   height: 60%;
-  /* border: 1px solid red; */
 `;
 
 const InfoText = styled.a`
@@ -72,7 +72,6 @@ const InfoText = styled.a`
     props.theme.color.onSurface};
   &:hover {
     cursor: pointer;
-    transform: scale(1.05);
   }
 `;
 
@@ -88,8 +87,8 @@ const ModeButton = styled.button`
   transition: all 0.3s ease-in-out;
   &:hover {
     cursor: pointer;
-    transform: scale(1.02);
-    box-shadow: 0px 0px 45px -10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 15px 0px
+      rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -98,6 +97,28 @@ const WhiteSunFill = styled(SunFill)`
   text-align: center;
 `;
 
+type Props = {
+  children?: ReactNode;
+};
+
+export const ScaleHover: React.FC<Props> = ({
+  children,
+}) => {
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+      }}
+      transition={{
+        bounce: 0.6,
+        type: "spring",
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 export default function PageHeader({}: Props) {
   const { toggleTheme } = useStore();
   return (
@@ -105,16 +126,33 @@ export default function PageHeader({}: Props) {
       <TextContainer>
         <Name>Emil Angelov</Name>
         <InfoTab>
-          <InfoText>About</InfoText>
-          <InfoText>Projects</InfoText>
-          <InfoText href="https://github.com/emilangelov1">
-            Github
-          </InfoText>
-          <ModeButton
-            onClick={() => toggleTheme()}
-          >
-            <WhiteSunFill />
-          </ModeButton>
+          <ScaleHover>
+            <InfoText>About</InfoText>
+          </ScaleHover>
+          <ScaleHover>
+            <InfoText>Projects</InfoText>
+          </ScaleHover>
+          <ScaleHover>
+            <InfoText href="https://github.com/emilangelov1">
+              Github
+            </InfoText>
+          </ScaleHover>
+          <ScaleHover>
+            <ModeButton
+              onClick={() => toggleTheme()}
+            >
+              <motion.div
+                whileHover={{ rotate: 60 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  duration: 0.3,
+                }}
+              >
+                <WhiteSunFill />
+              </motion.div>
+            </ModeButton>
+          </ScaleHover>
         </InfoTab>
       </TextContainer>
     </HeaderContaner>

@@ -4,7 +4,7 @@ import React from "react";
 type Props = {};
 
 const ProjectsText = styled.p`
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@ const ProjectsText = styled.p`
   line-height: 101px;
   color: ${(props) =>
     props.theme.color.onSurface};
-  padding: 50px 0px;
+  padding: 0px 0px 50px;
   user-select: none;
 `;
 

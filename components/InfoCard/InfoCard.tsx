@@ -4,18 +4,25 @@ import React from "react";
 type Props = {};
 
 const InfoCardContainer = styled.div`
+  @media only screen and (max-width: 500px) {
+    padding: 1rem;
+    min-width: 120%;
+  }
+  transition: all 0.2s ease-in-out;
   background: ${(props) =>
     props.theme.color.surface};
-  backdrop-filter: blur(38px);
+  backdrop-filter: blur(10px);
   border-radius: 11px;
   max-width: 90%;
   width: 720px;
   padding: 2rem;
-  margin: 0 auto;
   user-select: none;
+  bottom: 150px;
+  position: relative;
 `;
 
 const ProfilePhoto = styled.img`
+  transition: all 0.2s ease-in-out;
   position: relative;
   display: flex;
   height: 110px;
@@ -31,6 +38,7 @@ const ProfilePhoto = styled.img`
 `;
 
 const Name = styled.p`
+  transition: all 0.2s ease-in-out;
   display: block;
   position: relative;
   text-overflow: ellipsis;
@@ -50,6 +58,7 @@ const Name = styled.p`
 `;
 
 const ProfileInfo = styled.p`
+  transition: all 0.2s ease-in-out;
   position: relative;
   display: block;
   text-overflow: ellipsis;
@@ -69,7 +78,8 @@ const ProfileInfo = styled.p`
   padding: 0;
 `;
 
-const CurrentJob = styled.p`
+const CurrentJob = styled.div`
+  transition: all 0.2s ease-in-out;
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -93,6 +103,7 @@ const Workplace = styled.a`
 `;
 
 const LeftInfo = styled.div`
+  transition: all 0.2s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,11 +111,12 @@ const LeftInfo = styled.div`
   margin: 0 auto;
   flex: 2;
   @media only screen and (max-width: 580px) {
-    max-width: max-content;
+    max-width: fit-content;
   }
 `;
 
 const TopInfo = styled.div`
+  transition: all 0.2s ease-in-out;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -114,6 +126,7 @@ const TopInfo = styled.div`
 `;
 
 const InfoText = styled.p`
+  transition: all 0.2s ease-in-out;
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -127,6 +140,7 @@ const InfoText = styled.p`
 `;
 
 const NameContainer = styled.div`
+  transition: all 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -140,7 +154,7 @@ export default function InfoCard({}: Props) {
     <InfoCardContainer>
       <TopInfo>
         <LeftInfo>
-          <ProfilePhoto src="https://media-exp1.licdn.com/dms/image/C4D03AQElcv4AbozhWw/profile-displayphoto-shrink_800_800/0/1650489006908?e=1657756800&v=beta&t=zA0RtHtDfyDAitkQognjwUVmMEMzJwZN5FnJYNhRytQ"></ProfilePhoto>
+          <ProfilePhoto src="https://media-exp1.licdn.com/dms/image/C4D03AQElcv4AbozhWw/profile-displayphoto-shrink_800_800/0/1650489006908?e=1664409600&v=beta&t=cCJo7XgUjqCoB9TR7uq2aRLarjLnYYcIOQSaAYJEONg"></ProfilePhoto>
           <NameContainer>
             <Name>Emil Angelov</Name>
             <ProfileInfo>

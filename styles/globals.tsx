@@ -35,7 +35,7 @@ export const GlobalStyles = () => {
           background-color: ${theme.color
             .surface};
           border-radius: 4px;
-          transition: 0.3s;
+          transition: all 0.3s ease-in-out;
           border: 1px solid
             rgba(255, 255, 255, 0.2);
         }
