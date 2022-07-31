@@ -47,7 +47,7 @@ const AboutText = styled.p`
 
 const Model = () => {
   const gltf = useGLTF("/model.gltf", true);
-  console.log(gltf);
+  // console.log(gltf);
   if (Array.isArray(gltf)) {
     return (
       <>

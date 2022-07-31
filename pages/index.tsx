@@ -12,9 +12,13 @@ import {
   useEffect,
   useState,
 } from "react";
-import { motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+} from "framer-motion";
 import { LoaderAlt } from "emotion-icons/boxicons-regular";
 import { css, Global } from "@emotion/react";
+import { useProgress } from "@react-three/drei";
 
 const About = dynamic(
   () =>
@@ -23,7 +27,6 @@ const About = dynamic(
 );
 
 const Loading = styled(motion.div)`
-  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,7 +37,6 @@ const Loading = styled(motion.div)`
     props.theme.color.background};
   min-height: 100vh;
   min-width: 100vw;
-  position: relative;
 `;
 
 const LoadingCircle = styled(LoaderAlt)`
@@ -54,15 +56,15 @@ const LoadingComponent = () => {
       }}
     >
       <Loading
-        animate={{
-          opacity: [1, 1, 1, 1, 0],
-        }}
+        initial={{ opacity: 1 }}
         transition={{
-          duration: 7,
           bounce: 1,
           type: "spring",
           stiffness: 50,
+          delay: 1,
         }}
+        animate={{ opacity: [1, 0] }}
+        exit={{ display: "none" }}
       >
         <motion.div
           animate={{ scale: [0, 1.2, 0.8, 1] }}
@@ -70,20 +72,22 @@ const LoadingComponent = () => {
             duration: 0.8,
             bounce: 1,
             type: "string",
+            damping: 1,
           }}
+          exit={{ opacity: [1, 0] }}
         >
           <motion.div
             animate={{
               rotate: [0, 360],
             }}
             transition={{
-              duration: 0.7,
               repeat: Infinity,
               repeatType: "loop",
               bounce: 1,
               type: "string",
               stiffness: 10,
             }}
+            exit={{ opacity: [1, 0] }}
           >
             <LoadingCircle />
           </motion.div>
@@ -93,30 +97,13 @@ const LoadingComponent = () => {
   );
 };
 
-const EmotionProp = styled(Global)<{
-  loading: boolean;
-}>`
-  ${(props) => {
-    if (props.loading) {
-      return css`
-        body {
-          overflow: hidden;
-        }
-      `;
-    }
-    return css``;
-  }}
-`;
-
 const Home: NextPage = () => {
-  const [loading, setLoading] = useState(true);
-  setInterval(() => setLoading(false), 8000);
+  const { loaded } = useProgress();
   return (
     <>
-      <EmotionProp
-        loading={loading}
+      <Global
         styles={
-          loading &&
+          !loaded &&
           css`
             * {
               overflow: hidden;
@@ -124,7 +111,11 @@ const Home: NextPage = () => {
           `
         }
       />
-      {loading && <LoadingComponent />}
+
+      <AnimatePresence initial>
+        {!loaded && <LoadingComponent />}
+      </AnimatePresence>
+
       <Suspense fallback={null}>
         <PageHeader />
         <Background>
